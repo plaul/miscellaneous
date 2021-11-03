@@ -1,25 +1,34 @@
 ## 1) Add the following to styles.css (leave styles for body)
 ```
-ul.header {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
- }
- 
- ul.header li { float: left;}
- 
- ul.header li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
- }
- ul.header li a:hover:not(.active) { background-color: #111;}
- .active { background-color: #4CAF50;}
- ```
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: darkslategrey;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: lightskyblue;
+    color: white;
+}
+```
 ### 2) Create a new file bookRepository.js and add the following content to the file
 ```
 function bookRepository() {
