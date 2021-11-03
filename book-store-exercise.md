@@ -29,7 +29,7 @@ body {
     color: white;
 }
 ```
-### 2) Create a new file bookRepository.js (in the root of the project) and add the following content to the file
+### 2) Create a new file `bookRepository.js` (in the root of the project) and add the following content to the file
 ```
 function bookRepository() {
   let books = [
