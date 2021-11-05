@@ -75,5 +75,26 @@ function bookRepository() {
     editBook,
   }
 }
+
+/*************************************************************************************** 
+  This part is for when you start to talk with an API
+  Taken from this document: https://docs.google.com/document/d/1keZvtIhEb7qFpa4LblPJLKETy1CskAf5GP4XczqaN-0/edit#bookmark=id.j1nnjw6ga7ru 
+****************************************************************************************/   
+
+const URL = "http://localhost:3000/books"
+function makeOptions(method, body) {
+  const opts = {
+    method: method,
+    headers: {
+      "Content-type": "application/json",
+      "Accept": "application/json"
+    }
+  }
+  if (body) { //Observe how we can add new fields to an object when needed
+    opts.body = JSON.stringify(body);
+  }
+  return opts;
+}
+
 export default bookRepository();
 ```
