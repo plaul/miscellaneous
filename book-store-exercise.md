@@ -77,17 +77,3 @@ function bookRepository() {
 }
 export default bookRepository();
 ```
-
-
-3) In index.js remove EVERYTHING below import App from "./App" and add this code
-import bookFacade from "./bookFacade";
-import { BrowserRouter as Router } from "react-router-dom";
-
-const AppWithRouter = () => {
-  return (
-    <Router>
-      <App bookFacade={bookFacade} />
-    </Router>
-  );
-};
-ReactDOM.render(<AppWithRouter />, document.getElementById("root"));
