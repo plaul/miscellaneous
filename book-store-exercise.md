@@ -1,4 +1,4 @@
-## 1) Add the following to styles.css (leave styles for body)
+## 1) Add the following to styles.css
 ```
 body {
     margin: 0;
