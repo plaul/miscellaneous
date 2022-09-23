@@ -13,13 +13,17 @@
   <div style="margin-left: 10%;width: 75%;margin-right: auto">
     <h2>Car's 'R' Us Client Demo - Version still poor, but better ;-)</h2>
     <div id="btns" style="margin-bottom: 1em;">
-      <button id="mbtn-info">Info</button>
-      <button id="mbtn-show-all">Show all</button>
-      <button id="mbtn-find-one">find one</button>
-      <button id="mbtn-add-one">Add one</button>
-      <button id="mbtn-edit-one">Edit one</button>
+      <button id="menu-btn-info">Info</button>
+      <button id="menu-btn-show-all">Show all</button>
+      <button id="menu-btn-find-one">find one</button>
+      <button id="menu-btn-add-one">Add one</button>
+      <button id="menu-btn-edit-one">Edit one</button>
     </div>
+
     <div id="content">
+      <!--
+        ********* Page for info ****************
+      -->
       <div id="div-info" style="display:block">
         <h2>How to use this client</h2>
         <h4>Best Way</h4>
@@ -47,7 +51,9 @@
         </ul>
       </div>
 
-      <!--Page for show all -->
+      <!--
+        ********* Page for Show All ****************
+      -->
       <div id="div-show-all" style="display:none">
         <h3>Show all Members or Cars</h3>
         <button id="btn-get-all">Get all</button>
@@ -66,7 +72,9 @@
         </table>
       </div>
 
-      <!--Page for find one -->
+      <!--
+        ********* Page for find one ****************
+      -->
       <div id="div-find-one" style="display: none;">
         <h3>Find a single Member or Car</h3>
         <label for="text-for-id">Id</label>&nbsp;<input id="text-for-id" />
@@ -75,7 +83,9 @@
         <p id="car-info">You should eventually precent it nicely, but here, just Stringify the car</p>
       </div>
 
-      <!--Page for Add one -->
+      <!--
+        ********* Page Add One ****************
+      -->
       <div id="div-add-one" style="display: none;">
         <h3>Add a Car or a Member</h3>
         <div><label for="input-brand" style="min-width: 6em;">Brand</label>&nbsp;<input id="input-brand" /></div>
@@ -88,7 +98,9 @@
         <p>Use one of the two GET pages to verify that "something" was added</p>
       </div>
 
-      <!--Page for Edit one -->
+      <!--
+        ********* Page for Edit One ****************
+      -->
       <div id="div-edit-one" style="display: none;">
         <h3>Edit a Car or a Member</h3>
         <label for="text-for-id-editcar">Id</label>&nbsp;<input id="id-editcar" />
@@ -112,35 +124,43 @@
     </div>
   </div>
 
+  <!--
+    Here comes the JavaScript required for all the "views" above
+  -->
   <script>
     const URL = "http://localhost:8080/api/cars/"
+
     let lastVisibleContent = document.getElementById("div-info");
     document.getElementById("btns").onclick = handleButtonClick
     //Handle the switching between the different views
 
     function handleButtonClick(evt) {
       const target = evt.target
-      const isMenuBtn = target.tagName === "BUTTON" && target.id.startsWith("mbtn-")
+      const isMenuBtn = target.tagName === "BUTTON" && target.id.startsWith("menu-btn-")
       if (!isMenuBtn) {
         return
       }
       lastVisibleContent.style.display = "none"
-      const idForNewVisibleContent = target.id.replace("mbtn", "div")
+      const idForNewVisibleContent = target.id.replace("menu-btn", "div")
       lastVisibleContent = document.getElementById(idForNewVisibleContent);
       lastVisibleContent.style.display = "block"
 
       //Now handle JavaScript for the buttom clicked
       switch (target.id) {
-        case "mbtn-info": break //No JavaScript for this view
-        case "mbtn-show-all": showAll(); break
-        case "mbtn-find-one": findOne(); break
-        case "mbtn-add-one": addOne(); break
-        case "mbtn-edit-one": editOne(); break
+        case "menu-btn-info": break //No JavaScript for this view
+        case "menu-btn-show-all": showAll(); break
+        case "menu-btn-find-one": findOne(); break
+        case "menu-btn-add-one": addOne(); break
+        case "menu-btn-edit-one": editOne(); break
       }
     }
 
-    //We will add errorhandling when we meet in the class
-    function showAll() {
+    /*
+     ****************************************
+     * JavaScript for the showAll "view"
+     ****************************************
+    */
+    function showAll() { //We will add errorhandling when we meet in the class
       fetch(URL)
         .then(r => r.json())
         .then(allCars => {
@@ -157,6 +177,12 @@
         })
         .catch(e => console.log(e))
     }
+
+    /*
+     ****************************************
+     * JavaScript for the find One "view"
+     ****************************************
+    */
     function findOne() {
       document.getElementById("car-info").innerText = ""
       document.getElementById("btn-find-one").onclick = findCar
@@ -171,6 +197,11 @@
       }
     }
 
+    /*
+     ****************************************
+     * JavaScript for the add one "view"
+     ****************************************
+    */
     function addOne() {
       document.getElementById("bnt-submit-new-car").onclick = makeNewCar
       function makeNewCar() {
@@ -192,6 +223,12 @@
           )
       }
     }
+
+    /*
+     ****************************************
+     * JavaScript for the editOne "view"
+     ****************************************
+    */
 
     function editOne() {
       document.getElementById("btn-find-car-to-edit").onclick = findCar
