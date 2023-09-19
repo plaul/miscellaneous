@@ -1,4 +1,4 @@
-v<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,8 +13,8 @@ v<!DOCTYPE html>
     .row-height-30 {
       height: 35vh;
     }
-    .row-height-60 {
-      height: 50vh;
+    .row-height-55 {
+      height: 55vh;
     }
     .col {
       border: 1px solid steelblue;
@@ -27,6 +27,7 @@ v<!DOCTYPE html>
     <h2>Car's 'R' Us Client Demo - Version poor ;-)</h2>
     <div class="container-fluid">
       <div class="row row-height-30">
+        <!--########################  SHOW ALL CARS OR MEMBERS ########################-->
         <div class="col">
           <h3>Show all Members or Cars</h3>
           <button id="btn-get-all">Get all</button>
@@ -44,6 +45,8 @@ v<!DOCTYPE html>
             <tbody style="display:block;max-height: 8em;overflow-y: scroll;" id="tbody">
           </table>
         </div>
+
+        <!--########################  FIND A SINGLE CAR OR MEMBER ########################-->
         <div class="col">
           <h3>Find a single Member or Car</h3>
           <label for="text-for-id">Id</label>&nbsp;<input id="text-for-id" />
@@ -51,7 +54,8 @@ v<!DOCTYPE html>
           <p id="found-car">Show what you find here</p>
         </div>
       </div>
-      <div class="row row-height-60">
+      <div class="row row-height-55">
+        <!--########################  ADD A CAR OR MEMBER ########################-->
         <div class="col">
           <h3>Add a Car or a Member</h3>
           <button>Submit new item</button>
@@ -59,6 +63,7 @@ v<!DOCTYPE html>
           <p>Use one of the two GET pages to verify that "something" was added</p>
         </div>
 
+        <!--########################  EDIT A CAR OR MEMBER ########################-->
         <div class="col">
           <h3>Edit a Car or a Member</h3>
           <label for="text-for-id2">Id</label>&nbsp;<input id="text-for-id2" />
